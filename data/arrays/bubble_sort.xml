@@ -1,0 +1,54 @@
+<content>
+  <name>Bubble Sort</name>
+  <description>
+Bubble sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. This process is repeated until the list is sorted, with the largest elements "bubbling" up to their correct positions in each iteration. 
+
+While bubble sort is easy to implement and understand, its time complexity is \(O(n^2)\), making it inefficient for large datasets. However, it can be optimized to stop early if no swaps are made during an iteration, indicating that the list is already sorted.
+  </description>
+  <script>
+  <![CDATA[
+    /**
+    * Function to perform Bubble Sort on an array
+    * @param {number[]} arr - The array of numbers to be sorted
+    * @returns {number[]} - The sorted array
+    */
+    function bubbleSort(arr) {
+        let n = arr.length;
+        let swapped;
+
+        // Outer loop to iterate through the entire array
+        for (let i = 0; i < n - 1; i++) {
+            swapped = false; // Reset swapped flag at the start of each iteration
+
+            // Inner loop to compare adjacent elements and "bubble" the largest to the end
+            for (let j = 0; j < n - i - 1; j++) {
+                // If the current element is greater than the next element, swap them
+                if (arr[j] > arr[j + 1]) {
+                    let temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+
+                    swapped = true; // Set swapped flag if a swap occurs
+                }
+            }
+
+            // Logging the array after each outer loop iteration for clarity
+            console.log(`Step ${i + 1}: ${arr}`);
+
+            // If no swaps were made in this iteration, the array is already sorted
+            if (!swapped) break;
+        }
+
+        return arr;
+    }
+
+    // Example usage:
+    const arr = [64, 34, 25, 12, 22, 11, 90];
+    console.log("Original array:", arr);
+
+    const sortedArray = bubbleSort(arr);
+    console.log("Sorted array:", sortedArray);
+
+    ]]>
+  </script>
+</content>
