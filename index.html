@@ -64,7 +64,11 @@
     <!-- Sidebar -->
     <nav id="sidebar" class="bg-gray-800 text-white h-full flex-shrink-0 p-5 shadow-lg transition-all duration-300 expanded">
       <div class="flex justify-between items-center mb-4">
-        <span class="text-xl font-bold sidebar-label">DSA</span>
+        <span class="text-xl font-bold sidebar-label">
+          <a href="/">
+            DSA
+          </a>
+        </span>
         <button id="toggleSidebar" class="text-white" onclick="toggleSidebar()">
           <!-- Icon for expanding/collapsing -->
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -105,9 +109,9 @@
       <div id="dynamicContent">
         <p>Please select a section from the sidebar.</p>
       </div>
-      <div class="flex flex-row mt-5">
+      <div id="code_editor" class="flex flex-row mt-5">
         <div id="editorContainer" class="basis-1" style="height: 500px; min-width: 60%;"></div>
-        <button id="runCode" class="bg-blue-500 text-white basis-1/6">Run Code</button>
+        <button id="runCode" class="bg-gray-500 text-white basis-1/6 hover:bg-gray-700">Run Code</button>
         <div id="editorOutput" class="p-5 bg-gray-200 basis-1/2 wx-auto text-wrap"></div>
       </div>
     </div>
@@ -221,7 +225,7 @@
       const file_path = `${content}/${selected}`;
       const contentArea = document.getElementById('dynamicContent');
   
-      if (file_path) {
+      if (content && selected) {
         fetch(`data/${file_path}.xml`)
           .then(response => {
             if (!response.ok) {
@@ -264,7 +268,8 @@
             console.error('Error loading content:', err);
           });
       } else {
-        contentArea.innerHTML = `<p>Please select a section from the sidebar.</p>`;
+        document.getElementById('code_editor').remove();
+        contentArea.innerHTML = `<h1 class="font-bold text-xl">Welcome coders</h1>`;
       }
     }
   
