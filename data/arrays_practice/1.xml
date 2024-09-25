@@ -1,0 +1,29 @@
+<content>
+  <name>Reverse the array</name>
+  <description>
+
+  </description>
+  <script>
+  <![CDATA[
+  function reverseArray(arr) {
+      let start = 0;
+      let end = arr.length - 1;
+      
+      while (start < end) {
+          // Swap elements
+          let temp = arr[start];
+          arr[start] = arr[end];
+          arr[end] = temp;
+          
+          start++;
+          end--;
+      }
+      
+      return arr;
+  }
+  const array = [1, 2, 3, 4, 5];
+  const reversedArray = reverseArray(array);
+  console.log(reversedArray); // Output: [5, 4, 3, 2, 1]
+    ]]>
+  </script>
+</content>

@@ -1,0 +1,21 @@
+<content>
+  <name>Array Pair Sum</name>
+  <description>
+    Given an integer array nums of 2n integers, group these integers into n pairs (a1, b1), (a2, b2), ..., (an, bn) such that the sum of min(ai, bi) for all i is maximized. Return the maximized sum.
+  </description>
+  <script>
+  <![CDATA[
+  function arrayPairSum (nums) {
+    let sum = 0
+    nums.sort((a,b)=> a-b);
+    for(let i=0; i<nums.length; i+=2) {
+        sum += nums[i]
+    }
+    return sum
+};
+  const array = [1, 2, 5, 4, 3];
+  const output = arrayPairSum(array);
+  console.log(output);
+    ]]>
+  </script>
+</content>

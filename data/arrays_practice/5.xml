@@ -1,0 +1,38 @@
+<content>
+  <name>sort colors</name>
+  <description>
+Given an array nums with n objects colored red, white, or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white, and blue.
+Using Dutch National Flag Algorithm play with it Link : https://siddhant-ahire.github.io/dnf-visualization
+  </description>
+  <script>
+  <![CDATA[
+    function sortColors (nums) {
+      function swap(a, b) {
+          let temp = nums[a];
+          nums[a] = nums[b];
+          nums[b] = temp;
+      }
+      let low = 0;
+      let mid = 0;
+      let high = nums.length-1;
+      while( mid <= high) {
+          if(nums[mid] === 0) {
+              swap(mid, low);
+              mid++;
+              low++
+          } else if( nums[mid] === 1) {
+              mid++;
+          } else {
+              swap(mid, high);
+              high--;
+          }
+      }
+        return nums;
+    };
+
+    const array = [0, 1, 2, 2, 0, 1];
+    const output = sortColors(array);
+    console.log(output);
+    ]]>
+  </script>
+</content>
