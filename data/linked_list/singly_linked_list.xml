@@ -1,0 +1,47 @@
+<content>
+  <name>Singly Linked List</name>
+  <description>
+
+  </description>
+  <script>
+  <![CDATA[
+class ListNode {
+  constructor(val = 0, next = null) {
+    this.val = val;   // The data value of the node
+    this.next = next; // Pointer to the next node (initially null)
+  }
+}
+
+function insertNodeAtBeginning(head, value) {
+    let newNode = new ListNode(value, head);
+    return newNode;
+}
+function insertNodeAtEnd(head, value) {
+    let newNode = new ListNode(value);
+    if(head === null) {
+        return newNode;
+    }
+    let current = head;
+    let i = 0
+    while (current.next !== null) {
+        current = current.next;
+            console.log(i++)
+    }
+    current.next = newNode;
+    return head;
+}
+
+let head = new ListNode();
+console.log(head)
+head = insertNodeAtBeginning(head, 2)
+console.log(head)
+head = insertNodeAtEnd(head, 4)
+console.log(head)
+head = insertNodeAtEnd(head, 2)
+console.log(head)
+head = insertNodeAtBeginning(head, 10)
+console.log(head)
+
+    ]]>
+  </script>
+</content>
