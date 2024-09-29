@@ -5,6 +5,8 @@
   </description>
   <script>
   <![CDATA[
+
+  
 class ListNode {
   constructor(val = 0, next = null) {
     this.val = val;   // The data value of the node
@@ -30,17 +32,56 @@ function insertNodeAtEnd(head, value) {
     current.next = newNode;
     return head;
 }
+function deleteNode(head, value) {
+  if(head === null) return null // list is empty
+  if(head.val === value) return head.next; // head is the element to delete.
+  let current = head;
+  while(current.next !== null && current.next.val !== value) {
+    current = current.next;
+  } 
+  if( current.next !== null) {
+    current.next = current.next.next
+  }
+  return head
+  
+}
+function traverseList(head) {
+  let current = head
+  while(current !== null) {
+    console.log(current.val);
+    current = current.next
+  }
+}
+function searchInList(head, value) {
+  let current = head;
+  while( current !== null) {
+    if(current.val === value) {
+      return true
+    } else {
+      current = current.next
+    }
+  }
+  return false;
+}
+
 
 let head = new ListNode();
 console.log(head)
-head = insertNodeAtBeginning(head, 2)
-console.log(head)
 head = insertNodeAtEnd(head, 4)
 console.log(head)
-head = insertNodeAtEnd(head, 2)
+head = insertNodeAtBeginning(head, 2)
 console.log(head)
-head = insertNodeAtBeginning(head, 10)
-console.log(head)
+// head = deleteNode(head, 2)
+// console.log(head)
+// head = insertNodeAtEnd(head, 2)
+// console.log(head)
+// head = insertNodeAtBeginning(head, 10)
+// console.log(head)
+traverseList(head)
+searchInList(head, 4)
+
+    
+  
 
     ]]>
   </script>
