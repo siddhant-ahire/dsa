@@ -117,6 +117,10 @@
     #sidebar::-webkit-scrollbar-track {
       background: #1e293b;
     }
+    #sidebar.collapsed .sidebar-label,
+    #sidebar.collapsed .section-count {
+      display: none !important;
+    }
   </style>
 </head>
 
@@ -144,10 +148,23 @@
     async function generateSidebar() {
       const sidebar = document.getElementById("sidebar");
 
+      const indexData = await fetch('data/index.json').then(res => res.json());
+      // Calculate total problems count
+      let totalProblems = 0;
+      for (const section of Object.values(indexData)) {
+        if (Array.isArray(section.problems)) {
+          totalProblems += section.problems.length;
+        }
+      }
+
+      // Add total problems count as the main sidebar heading
       const header = document.createElement('div');
       header.className = "flex justify-between items-center mb-4";
       header.innerHTML = `
-        <span class="text-xl font-bold sidebar-label"><a href="/dsa">DSA</a></span>
+        <span class="text-xl font-bold sidebar-label flex items-center gap-2">
+          <span class="material-symbols-outlined" style="font-size:1.3em;">quiz</span>
+          Total Problems: <span class="font-bold">${totalProblems}</span>
+        </span>
         <button id="toggleSidebar" class="text-white" onclick="toggleSidebar()">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h7" />
@@ -155,8 +172,6 @@
         </button>
       `;
       sidebar.appendChild(header);
-
-      const indexData = await fetch('data/index.json').then(res => res.json());
 
       for (const [sectionKey, sectionValue] of Object.entries(indexData)) {
         const parentLi = document.createElement('li');
@@ -166,6 +181,7 @@
         parentLi.innerHTML = `
           <span class="material-symbols-outlined">${sectionValue.icon}</span>
           <span class="sidebar-label">${sectionValue.title}</span>
+          <span class="ml-auto bg-blue-700/70 text-blue-100 text-xs font-semibold px-2 py-0.5 rounded-full section-count">${sectionValue.problems.length}</span>
         `;
 
         const childUl = document.createElement('ul');
