@@ -1,0 +1,23 @@
+<content>
+  <name>Reverse Integer</name>
+  <description>
+    Reverse the digits of a given integer.
+  </description>
+  <script>
+  <![CDATA[
+    /**
+     * Reverses the digits of a given integer.
+     * @param {number} n - The integer to reverse.
+     * @returns {number} - The reversed integer.
+     */
+    function reverseInteger(n) {
+        const sign = Math.sign(n);
+        const reversed = parseInt(n.toString().split("").reverse().join(""), 10);
+        return sign * reversed;
+    }
+
+    console.log(reverseInteger(12345)); // 54321
+    console.log(reverseInteger(-12345)); // -54321
+    ]]>
+  </script>
+</content>

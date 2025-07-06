@@ -1,0 +1,30 @@
+<content>
+  <name>Remove Duplicates <a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array/" style="color: blue; text-decoration: underline;" target="_blank">Leetcode</a></name>
+  <description>
+    Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once. The relative order of the elements should be kept the same. Then return the number of unique elements in nums.
+  </description>
+  <script>
+  <![CDATA[
+    /**
+    * Removes duplicate elements from an array.
+    * @param {Array} arr - The input array.
+    * @return {number} - The number of unique elements in the array.
+    * The function modifies the input array in-place to contain only unique elements.
+    * The first part of the array will contain the unique elements, and the rest will be ignored.
+    * The function returns the count of unique elements.
+    */
+    var removeDuplicates = function(nums) {
+        let x = 0;
+        for (let i = 0; i < nums.length; i++) {
+            if (nums[i] > nums[x]) {
+                x++;
+                nums[x] = nums[i];
+            }
+        }
+        return x + 1;
+    }; 
+
+    console.log(removeDuplicates([1, 2, 2, 3, 4, 4, 5]));
+    ]]>
+  </script>
+</content>

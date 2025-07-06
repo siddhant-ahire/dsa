@@ -1,0 +1,29 @@
+<content>
+  <name>Pattern 6: Print a Right-Aligned Right-Angled Triangle of Stars</name>
+  <description>
+    Print a right-aligned right-angled triangle pattern of stars with n rows.
+    Each row contains an increasing number of stars, starting from 1 star in the first row to n stars in the nth row.
+  </description>
+  <script>
+  <![CDATA[
+    /**
+     * Prints a right-aligned right-angled triangle pattern of stars with n rows.
+     * @param {number} n - The number of rows in the triangle.
+     * Example: For n = 5, the output will be:
+         *
+        **
+       ***
+      ****
+     *****
+     */
+    function printRightAlignedTriangle(n) {
+        for (let i = 1; i <= n; i++) {
+            let row = " ".repeat(n - i) + "*".repeat(i);
+            console.log(row);
+        }
+    }
+
+    printRightAlignedTriangle(5);
+    ]]>
+  </script>
+</content>

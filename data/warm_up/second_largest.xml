@@ -1,0 +1,25 @@
+<content>
+  <name>Second Largest</name>
+  <description>
+    Find the second largest element in an array.
+  </description>
+  <script>
+  <![CDATA[
+    function findSecondLargest(nums) {
+        let first = -Infinity;
+        let second = -Infinity;
+        for (let i = 0; i < nums.length; i++) {
+            if (nums[i] > first) {
+                second = first;
+                first = nums[i];
+            } else if (nums[i] > second && nums[i] !== first) {
+                second = nums[i];
+            }
+        }
+        return second === -Infinity ? null : second;
+    }
+
+    console.log(findSecondLargest([3, 1, 4, 4, 2]));
+    ]]>
+  </script>
+</content>

@@ -1,0 +1,22 @@
+<content>
+  <name>Palindrome Number</name>
+  <description>
+    Check if a given number is a palindrome.
+  </description>
+  <script>
+  <![CDATA[
+    /**
+     * Checks if a given number is a palindrome.
+     * @param {number} n - The number to check.
+     * @returns {boolean} - Returns true if the number is a palindrome, false otherwise.
+     */
+    function isPalindrome(n) {
+        const str = n.toString();
+        const reversed = str.split("").reverse().join("");
+        return str === reversed;
+    }
+    console.log(isPalindrome(12321)); // true
+    console.log(isPalindrome(12345)); // false
+    ]]>
+  </script>
+</content>

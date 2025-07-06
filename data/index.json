@@ -1,0 +1,56 @@
+{
+    "warm_up": {
+        "title": "Warm Up",
+        "icon": "data_array",
+        "problems": [
+            { "key": "second_largest", "name": "Second Largest" },
+            { "key": "pattern_1", "name": "Pattern 1" },
+            { "key": "pattern_2", "name": "Pattern 2" },
+            { "key": "pattern_3", "name": "Pattern 3" },
+            { "key": "pattern_4", "name": "Pattern 4" },
+            { "key": "pattern_5", "name": "Pattern 5" },
+            { "key": "pattern_6", "name": "Pattern 6" },
+            { "key": "pattern_7", "name": "Pattern 7" },
+            { "key": "pattern_8", "name": "Pattern 8" },
+            { "key": "count_digit", "name": "Count Digit" },
+            { "key": "palindrome", "name": "Palindrome" },
+            { "key": "reverse_integer", "name": "Reverse Integer" }
+        ]
+    },
+    "arrays": {
+        "title": "Arrays",
+        "icon": "data_array",
+        "problems": [
+            { "key": "remove_duplicates", "name": "Remove Duplicates" }
+        ]
+    },
+    "arrays_practice": {
+        "title": "Arrays Practice",
+        "icon": "data_array",
+        "problems": [
+            { "key": "1", "name": "Practice Problem 1" },
+            { "key": "2", "name": "Practice Problem 2" },
+            { "key": "3", "name": "Practice Problem 3" },
+            { "key": "4", "name": "Practice Problem 4" },
+            { "key": "5", "name": "Practice Problem 5" },
+            { "key": "6", "name": "Practice Problem 6" }
+        ]
+    },
+    "searching_and_sorting": {
+        "title": "Searching and Sorting",
+        "icon": "data_array",
+        "problems": [
+            { "key": "bubble_sort", "name": "Bubble Sort" },
+            { "key": "selection_sort", "name": "Selection Sort" },
+            { "key": "insertion_sort", "name": "Insertion Sort" },
+            { "key": "quick_sort", "name": "Quick Sort" }
+        ]
+    },
+    "linked_list": {
+        "title": "Linked List",
+        "icon": "data_array",
+        "problems": [
+            { "key": "singly_linked_list", "name": "Singly Linked List" }
+        ]
+    }
+}

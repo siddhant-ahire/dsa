@@ -1,0 +1,32 @@
+<content>
+  <name>Pattern 5: Print a Reverse Right-Angled Triangle of Increasing Numbers</name>
+  <description>
+    Print a reverse right-angled triangle pattern of increasing numbers with n rows.
+    Each row contains a decreasing number of digits, starting from n in the first row to 1 in the nth row.
+  </description>
+  <script>
+  <![CDATA[
+    /**
+     * Prints a reverse right-angled triangle pattern of increasing numbers with n rows.
+     * @param {number} n - The number of rows in the triangle.
+     * Example: For n = 5, the output will be:
+        5 5 5 5 5
+        4 4 4 4
+        3 3 3
+        2 2
+        1
+     */
+    function printReverseRightAngledTriangle(n) {
+        for (let i = n; i >= 1; i--) {
+            let row = "";
+            for (let j = 1; j <= i; j++) {
+                row += i + " ";
+            }
+            console.log(row);
+        }
+    }
+
+    printReverseRightAngledTriangle(5);
+    ]]>
+  </script>
+</content>

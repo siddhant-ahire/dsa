@@ -1,0 +1,26 @@
+<content>
+  <name>Count Digit</name>
+  <description>
+    Count the number of digits in a positive integer.
+  </description>
+  <script>
+  <![CDATA[
+    /**
+     * Counts the number of digits in a positive integer.
+     * @param {number} n - The positive integer to count digits in.
+     * @returns {number} The count of digits in the integer.
+     */
+    function countDigits(n) {
+        if (n === 0) return 1;
+        let count = 0;
+        while (n > 0) {
+            n = Math.floor(n / 10);
+            count++;
+        }
+        return count;
+    }
+
+    console.log(countDigits(12345));
+    ]]>
+  </script>
+</content>

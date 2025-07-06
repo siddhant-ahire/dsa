@@ -1,0 +1,32 @@
+<content>
+  <name>Pattern 4: Print a Right-Angled Triangle of Repeated Numbers</name>
+  <description>
+    Print a right-angled triangle pattern of repeated numbers with n rows.
+    Each row contains an increasing number of digits, starting from 1 in the first row to n in the nth row.
+  </description>
+  <script>
+  <![CDATA[
+    /**
+     * Prints a right-angled triangle pattern of repeated numbers with n rows.
+     * @param {number} n - The number of rows in the triangle.
+     * Example: For n = 5, the output will be:
+        1
+        2 2
+        3 3 3
+        4 4 4 4
+        5 5 5 5 5
+     */
+    function printRightAngledRepeatedNumberTriangle(n) {
+        for (let i = 1; i <= n; i++) {
+            let row = "";
+            for (let j = 1; j <= i; j++) {
+                row += i + " ";
+            }
+            console.log(row);
+        }
+    }
+
+    printRightAngledRepeatedNumberTriangle(5);
+    ]]>
+  </script>
+</content>

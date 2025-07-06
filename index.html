@@ -1,177 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>DSA with Siddhant</title>
-  <link rel="stylesheet" href="monaco-editor/min/vs/editor/editor.main.css">
+
+  <link rel="stylesheet" href="monaco-editor/min/vs/editor/editor.main.css" />
   <script src="https://unpkg.com/monaco-editor/min/vs/loader.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
   <style>
-    /* Smooth transition for the sidebar and icons */
     #sidebar {
       transition: all 0.3s ease;
+      background: linear-gradient(180deg, #1e293b 0%, #334155 100%);
     }
-
-    /* Hide labels in collapsed mode */
     #sidebar.collapsed .sidebar-label {
       display: none;
     }
-
-    /* Center the icons in collapsed mode */
     #sidebar.collapsed .sidebar-item {
       justify-content: center;
     }
-
-    /* Shrink sidebar width when collapsed */
     #sidebar.collapsed {
       width: 4rem;
     }
-
-    /* Expand sidebar to full width */
     #sidebar.expanded {
       width: 18rem;
     }
-
-    /* Hide children items by default */
+    .sidebar-item {
+      cursor: pointer;
+      border-radius: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      transition: background 0.2s, color 0.2s;
+      margin-bottom: 0.25rem;
+      font-size: 1rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .sidebar-item:hover, .sidebar-item.active {
+      background: #475569;
+      color: #fff;
+    }
+    .sidebar-item .material-symbols-outlined {
+      font-size: 1.5rem;
+      margin-right: 0.5rem;
+    }
     .child-menu {
       display: none;
-      margin-left: 2rem;
+      margin-left: 1.5rem;
+      background: rgba(51,65,85,0.15);
+      border-radius: 0.5rem;
+      padding: 0.25rem 0.5rem;
+      transition: all 0.3s ease;
     }
-
-    /* Show children items when parent is active */
     .parent-active .child-menu {
       display: block;
     }
-
-    /* Add transition effect for child menu items */
-    .child-menu {
-      transition: all 0.3s ease;
+    .child-menu .sidebar-item {
+      font-size: 0.95rem;
+      font-weight: 400;
+      margin-bottom: 0.15rem;
+      border-radius: 0.375rem;
+      padding-left: 2.25rem;
+      background: none;
     }
-
-    /* Style for console output */
+    .child-menu .sidebar-item:hover, .child-menu .sidebar-item.active {
+      background: #64748b;
+      color: #fff;
+    }
     #editorOutput {
       white-space: pre-wrap;
+      background: #1e293b;
+      color: #e5e7eb;
+      font-family: 'Fira Mono', 'Menlo', 'Monaco', 'Consolas', monospace;
+      font-size: 1rem;
+      box-shadow: 0 2px 8px 0 rgba(30,41,59,0.08);
+      border: 1px solid #334155;
+      padding: 1rem 1.5rem;
+      overflow-x: auto;
+      transition: background 0.2s;
+    }
+    .console-line {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      margin-bottom: 0.25rem;
+      line-height: 1.5;
+    }
+    .console-icon {
+      font-size: 1.1em;
+      min-width: 1.5em;
+      text-align: center;
+    }
+    .console-log { color: #38bdf8; }
+    .console-error { color: #ef4444; }
+    .console-warn { color: #facc15; }
+    .console-info { color: #34d399; }
+    .console-result { color: #a3e635; font-weight: bold; }
+    .console-label { font-weight: 500; margin-right: 0.5em; }
+    /* Custom scrollbar for sidebar */
+    #sidebar {
+      scrollbar-width: thin;
+      scrollbar-color: #64748b #1e293b;
+    }
+    #sidebar::-webkit-scrollbar {
+      width: 8px;
+    }
+    #sidebar::-webkit-scrollbar-thumb {
+      background: #64748b;
+      border-radius: 4px;
+    }
+    #sidebar::-webkit-scrollbar-track {
+      background: #1e293b;
     }
   </style>
 </head>
 
 <body class="bg-gray-100">
-
   <div class="flex h-screen">
     <!-- Sidebar -->
     <nav id="sidebar" class="bg-gray-800 text-white h-full flex-shrink-0 p-5 shadow-lg transition-all duration-300 expanded">
-      <div class="flex justify-between items-center mb-4">
-        <span class="text-xl font-bold sidebar-label">
-          <a href="/dsa">
-            DSA
-          </a>
-        </span>
-        <button id="toggleSidebar" class="text-white" onclick="toggleSidebar()">
-          <!-- Icon for expanding/collapsing -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h7" />
-          </svg>
-        </button>
-      </div>
-      
-      <!-- Menu Items -->
-      <!-- Arrays practice -->
-      <ul class="space-y-2">
-        <li id="arrays" class="sidebar-item flex items-center space-x-2 parent" onclick="toggleChildMenu(this)">
-          <span class="material-symbols-outlined">
-            data_array
-            </span>
-          <span class="sidebar-label">Arrays</span>
-        </li>
-        <!-- Arrays childs -->
-        <ul class="child-menu">
-          <li id="bubble_sort" class="sidebar-item flex items-center space-x-2">
-            <a href="?content=arrays&selected=bubble_sort" class="flex items-center space-x-2">
-              <span class="sidebar-label">Bubble Sort</span>
-            </a>
-          </li>
-          <li id="selection_sort" class="sidebar-item flex items-center space-x-2">
-            <a href="?content=arrays&selected=selection_sort" class="flex items-center space-x-2">
-              <span class="sidebar-label">Selection Sort</span>
-            </a>
-          </li>
-<li id="insertion_sort" class="sidebar-item flex items-center space-x-2">
-            <a href="?content=arrays&selected=insertion_sort" class="flex items-center space-x-2">
-              <span class="sidebar-label">Insertion Sort</span>
-            </a>
-          </li>
-<li id="quick_sort" class="sidebar-item flex items-center space-x-2">
-            <a href="?content=arrays&selected=quick_sort" class="flex items-center space-x-2">
-              <span class="sidebar-label">Quick Sort</span>
-            </a>
-          </li>
-        </ul>
-      </ul>
-      <ul class="space-y-2">
-        <li id="arrays_practice" class="sidebar-item flex items-center space-x-2 parent" onclick="toggleChildMenu(this)">
-          <span class="material-symbols-outlined">
-            data_array
-            </span>
-          <span class="sidebar-label">Arrays-Practice </span>
-        </li>
-        <!-- Arrays practice childs -->
-        <ul class="child-menu">
-          <li id="1" class="sidebar-item flex items-center space-x-2">
-            <a href="?content=arrays_practice&selected=1" class="flex items-center space-x-2">
-              <span class="sidebar-label">Practice Problem 1</span>
-            </a>
-          </li>
-          <li id="2" class="sidebar-item flex items-center space-x-2">
-            <a href="?content=arrays_practice&selected=2" class="flex items-center space-x-2">
-              <span class="sidebar-label">Practice Problem 2</span>
-            </a>
-          </li>
-          <li id="3" class="sidebar-item flex items-center space-x-2">
-            <a href="?content=arrays_practice&selected=3" class="flex items-center space-x-2">
-              <span class="sidebar-label">Practice Problem 3</span>
-            </a>
-          </li>
-          <li id="4" class="sidebar-item flex items-center space-x-2">
-            <a href="?content=arrays_practice&selected=4" class="flex items-center space-x-2">
-              <span class="sidebar-label">Practice Problem 4</span>
-            </a>
-          </li>
-          <li id="5" class="sidebar-item flex items-center space-x-2">
-            <a href="?content=arrays_practice&selected=5" class="flex items-center space-x-2">
-              <span class="sidebar-label">Practice Problem 5</span>
-            </a>
-          </li>
-          <li id="6" class="sidebar-item flex items-center space-x-2">
-            <a href="?content=arrays_practice&selected=6" class="flex items-center space-x-2">
-              <span class="sidebar-label">Practice Problem 6</span>
-            </a>
-          </li>
-        </ul>
-      </ul>
-      <ul class="space-y-2">
-        <li id="linked_list" class="sidebar-item flex items-center space-x-2 parent" onclick="toggleChildMenu(this)">
-          <span class="material-symbols-outlined">
-            data_array
-            </span>
-          <span class="sidebar-label">Linked List</span>
-        </li>
-        <!-- Arrays childs -->
-        <ul class="child-menu">
-          <li id="singly_linked_list" class="sidebar-item flex items-center space-x-2">
-            <a href="?content=linked_list&selected=singly_linked_list" class="flex items-center space-x-2">
-              <span class="sidebar-label">Signly Linked List</span>
-            </a>
-          </li>
-        </ul>
-      </ul>
+      <!-- Dynamically generated -->
     </nav>
 
     <!-- Main Content -->
     <div id="contentArea" class="flex-grow p-10">
-      <!-- Include essential content here -->
       <div id="dynamicContent">
         <p>Please select a section from the sidebar.</p>
       </div>
@@ -184,60 +139,97 @@
   </div>
 
   <script>
+    async function generateSidebar() {
+      const sidebar = document.getElementById("sidebar");
+
+      const header = document.createElement('div');
+      header.className = "flex justify-between items-center mb-4";
+      header.innerHTML = `
+        <span class="text-xl font-bold sidebar-label"><a href="/dsa">DSA</a></span>
+        <button id="toggleSidebar" class="text-white" onclick="toggleSidebar()">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h7" />
+          </svg>
+        </button>
+      `;
+      sidebar.appendChild(header);
+
+      const indexData = await fetch('data/index.json').then(res => res.json());
+
+      for (const [sectionKey, sectionValue] of Object.entries(indexData)) {
+        const parentLi = document.createElement('li');
+        parentLi.className = 'sidebar-item flex items-center space-x-2 parent';
+        parentLi.setAttribute('id', sectionKey);
+        parentLi.setAttribute('onclick', 'toggleChildMenu(this)');
+        parentLi.innerHTML = `
+          <span class="material-symbols-outlined">${sectionValue.icon}</span>
+          <span class="sidebar-label">${sectionValue.title}</span>
+        `;
+
+        const childUl = document.createElement('ul');
+        childUl.className = 'child-menu';
+
+        sectionValue.problems.forEach(problem => {
+          const childLi = document.createElement('li');
+          childLi.className = 'sidebar-item flex items-center space-x-2';
+          childLi.setAttribute('id', problem.key);
+          childLi.innerHTML = `
+            <a href="?content=${sectionKey}&selected=${problem.key}" class="flex items-center space-x-2">
+              <span class="sidebar-label">${problem.name}</span>
+            </a>
+          `;
+          childUl.appendChild(childLi);
+        });
+
+        const wrapper = document.createElement('ul');
+        wrapper.className = 'space-y-2';
+        wrapper.appendChild(parentLi);
+        wrapper.appendChild(childUl);
+        sidebar.appendChild(wrapper);
+      }
+    }
+
+    function toReadable(key) {
+      return key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    }
+
     function toggleSidebar() {
       const sidebar = document.getElementById('sidebar');
-  
-      if (sidebar.classList.contains('expanded')) {
-        sidebar.classList.remove('expanded');
-        sidebar.classList.add('collapsed');
-      } else {
-        sidebar.classList.remove('collapsed');
-        sidebar.classList.add('expanded');
-      }
+      sidebar.classList.toggle('collapsed');
+      sidebar.classList.toggle('expanded');
     }
-  
+
     function toggleChildMenu(parentItem) {
-      // Find the next sibling which is the child menu
       const childMenu = parentItem.nextElementSibling;
-  
-      // Toggle the display of the child menu
       if (childMenu && childMenu.classList.contains('child-menu')) {
-        if (childMenu.style.display === 'block') {
-          childMenu.style.display = 'none';
-        } else {
-          childMenu.style.display = 'block';
-        }
+        childMenu.style.display = childMenu.style.display === 'block' ? 'none' : 'block';
       }
     }
-  
+
     function highlightMenus() {
-      // Extract query parameters
       const params = new URLSearchParams(window.location.search);
       const content = params.get('content');
       const selected = params.get('selected');
-  
+
       if (content) {
-        // Find and expand the parent menu
         const parentMenu = document.getElementById(content);
         if (parentMenu) {
-          // Mark the parent menu as active and expand its child menu
-          parentMenu.classList.add('parent-active');
+          parentMenu.classList.add('parent-active', 'active');
           const childMenu = parentMenu.nextElementSibling;
           if (childMenu && childMenu.classList.contains('child-menu')) {
             childMenu.style.display = 'block';
           }
         }
-  
-        // Highlight the child menu if 'selected' parameter is available
+
         if (selected) {
           const childMenuItem = document.getElementById(selected);
           if (childMenuItem) {
-            childMenuItem.classList.add('bg-gray-700', 'text-white'); // Add a class to highlight the child menu item
+            childMenuItem.classList.add('active');
           }
         }
       }
     }
-  
+
     function initializeMonacoEditor(htmlContent) {
       require.config({ paths: { 'vs': 'monaco-editor/min/vs' }});
       require(['vs/editor/editor.main'], function() {
@@ -247,35 +239,43 @@
           theme: 'vs-dark',
           automaticLayout: true
         });
-  
+
         document.getElementById('runCode').addEventListener('click', () => {
           const code = editor.getValue();
           const outputDiv = document.getElementById('editorOutput');
-  
+
           const originalConsole = { ...console };
           const output = [];
-  
-          function logToOutput(...args) {
-            output.push(args.map(arg => typeof arg === 'object' ? JSON.stringify(arg, null, 2) : arg).join(' '));
-            outputDiv.innerHTML = output.join('<br/>');
+
+          function logToOutput(type, ...args) {
+            let icon = '', cssClass = '';
+            switch(type) {
+              case 'log': icon = '🟦'; cssClass = 'console-log'; break;
+              case 'error': icon = '⛔'; cssClass = 'console-error'; break;
+              case 'warn': icon = '⚠️'; cssClass = 'console-warn'; break;
+              case 'info': icon = 'ℹ️'; cssClass = 'console-info'; break;
+              case 'result': icon = '✅'; cssClass = 'console-result'; break;
+              default: icon = ''; cssClass = '';
+            }
+            output.push(`<div class="console-line ${cssClass}"><span class="console-icon">${icon}</span><span>${args.map(arg => (typeof arg === 'object' ? JSON.stringify(arg, null, 2) : arg)).join(' ')}</span></div>`);
+            outputDiv.innerHTML = output.join('');
           }
-  
-          console.log = (...args) => logToOutput('>', ...args);
-          console.error = (...args) => logToOutput('ERROR:', ...args);
-          console.warn = (...args) => logToOutput('WARN:', ...args);
-          console.info = (...args) => logToOutput('INFO:', ...args);
-  
+
+          console.log = (...args) => logToOutput('log', ...args);
+          console.error = (...args) => logToOutput('error', ...args);
+          console.warn = (...args) => logToOutput('warn', ...args);
+          console.info = (...args) => logToOutput('info', ...args);
+
           try {
             outputDiv.innerHTML = '';
             const result = eval(code);
-  
             if (result !== undefined) {
-              outputDiv.innerHTML += `<br/><strong>Result:</strong> ${result}`;
+              logToOutput('result', result);
             }
           } catch (error) {
-            outputDiv.innerHTML += `<br/><strong>Error:</strong> ${error.message}`;
+            logToOutput('error', error.message);
           }
-  
+
           console.log = originalConsole.log;
           console.error = originalConsole.error;
           console.warn = originalConsole.warn;
@@ -283,47 +283,75 @@
         });
       });
     }
-  
+
     function loadContent() {
       const params = new URLSearchParams(window.location.search);
       const content = params.get('content');
       const selected = params.get('selected');
       const file_path = `${content}/${selected}`;
       const contentArea = document.getElementById('dynamicContent');
-  
+
       if (content && selected) {
         fetch(`data/${file_path}.xml`)
           .then(response => {
-            if (!response.ok) {
-              throw new Error('Network response was not ok');
-            }
+            if (!response.ok) throw new Error('Network response was not ok');
             return response.text();
           })
           .then(xmlText => {
             const parser = new DOMParser();
             const xmlDoc = parser.parseFromString(xmlText, 'application/xml');
-  
+
             const nameElem = xmlDoc.querySelector('name');
             const descriptionElem = xmlDoc.querySelector('description');
             const scriptElem = xmlDoc.querySelector('script');
-  
+
             contentArea.innerHTML = '';
-  
+
             if (nameElem) {
-              const name = nameElem.textContent;
+              const name = nameElem.innerHTML || nameElem.textContent;
               const nameDisplay = document.createElement('h2');
-              nameDisplay.textContent = name;
               nameDisplay.className = 'text-xl font-bold';
+              nameDisplay.innerHTML = name;
               contentArea.appendChild(nameDisplay);
             }
-  
+
             if (descriptionElem) {
-              const description = descriptionElem.textContent;
-              const descriptionDisplay = document.createElement('p');
-              descriptionDisplay.textContent = description;
-              contentArea.appendChild(descriptionDisplay);
+              const description = descriptionElem.innerHTML.trim();
+              if (description) {
+                const descriptionDisplay = document.createElement('p');
+                if (description.replace(/<[^>]+>/g, '').length > 200) {
+                  // Show only the first 200 visible characters and add a Read more link
+                  // For HTML, we need to truncate text content, not raw HTML
+                  const tempDiv = document.createElement('div');
+                  tempDiv.innerHTML = description;
+                  const textContent = tempDiv.textContent || tempDiv.innerText || '';
+                  const shortDesc = textContent.slice(0, 200);
+                  descriptionDisplay.innerHTML = `
+                    <span class="desc-short">${shortDesc}...</span>
+                    <span class="desc-full" style="display:none;">${description}</span>
+                    <a href="#" class="text-blue-600 underline ml-2 read-more-toggle">Read more</a>
+                  `;
+                  descriptionDisplay.querySelector('.read-more-toggle').onclick = function(e) {
+                    e.preventDefault();
+                    const shortSpan = descriptionDisplay.querySelector('.desc-short');
+                    const fullSpan = descriptionDisplay.querySelector('.desc-full');
+                    if (fullSpan.style.display === 'none') {
+                      fullSpan.style.display = '';
+                      shortSpan.style.display = 'none';
+                      this.textContent = 'Read less';
+                    } else {
+                      fullSpan.style.display = 'none';
+                      shortSpan.style.display = '';
+                      this.textContent = 'Read more';
+                    }
+                  };
+                } else {
+                  descriptionDisplay.innerHTML = description;
+                }
+                contentArea.appendChild(descriptionDisplay);
+              }
             }
-  
+
             if (scriptElem) {
               const scriptContent = scriptElem.textContent;
               initializeMonacoEditor(scriptContent);
@@ -338,14 +366,12 @@
         contentArea.innerHTML = `<h1 class="font-bold text-xl">Welcome coders</h1>`;
       }
     }
-  
-    window.onload = function() {
+
+    window.onload = async function () {
+      await generateSidebar();
       loadContent();
-      highlightMenus(); // Highlight the menus based on the query parameters
+      highlightMenus();
     };
   </script>
-  
-
 </body>
-
 </html>

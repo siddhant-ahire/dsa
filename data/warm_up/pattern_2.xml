@@ -1,0 +1,31 @@
+<content>
+  <name>Pattern 2: Print Right-Angled Triangle</name>
+  <description>
+    Print a right-angled triangle pattern of stars with n rows.
+    Each row contains an increasing number of stars, starting from 1 star in the first row to n stars in the nth row.
+  </description>
+  <script>
+  <![CDATA[
+    /**
+     * Prints a right-angled triangle pattern of stars with n rows.
+     * @param {number} n - The number of rows in the triangle.
+     * Example: For n = 5, the output will be:
+        *
+        * *
+        * * *
+        * * * *
+        * * * * *
+     */
+    function printRightAngledTriangle(n) {
+        for (let i = 1; i <= n; i++) {
+            let row = "";
+            for (let j = 1; j <= i; j++) {
+                row += "* ";
+            }
+            console.log(row);
+        }
+    }
+    printRightAngledTriangle(5);
+    ]]>
+  </script>
+</content>
