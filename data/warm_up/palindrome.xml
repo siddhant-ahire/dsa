@@ -1,5 +1,6 @@
 <content>
   <name>Palindrome Number</name>
+  <leetcode>https://leetcode.com/problems/palindrome-number/</leetcode>
   <description>
     Check if a given number is a palindrome.
   </description>

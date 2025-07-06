@@ -1,5 +1,6 @@
 <content>
   <name>Reverse Integer</name>
+  <leetcode>https://leetcode.com/problems/reverse-integer/</leetcode>
   <description>
     Reverse the digits of a given integer.
   </description>
@@ -7,13 +8,20 @@
   <![CDATA[
     /**
      * Reverses the digits of a given integer.
-     * @param {number} n - The integer to reverse.
+     * @param {number} x - The integer to reverse.
      * @returns {number} - The reversed integer.
      */
-    function reverseInteger(n) {
-        const sign = Math.sign(n);
-        const reversed = parseInt(n.toString().split("").reverse().join(""), 10);
-        return sign * reversed;
+    function reverseInteger(x) {
+        let xCopy = x;
+        x = Math.abs(x);
+        let rev = 0;
+        while (x > 0) {
+            let last = x % 10;
+            rev = rev * 10 + last;
+            x = Math.floor(x / 10);
+        }
+        if (rev > 2**31 - 1) return 0;
+        return xCopy < 0 ? -rev : rev;
     }
 
     console.log(reverseInteger(12345)); // 54321

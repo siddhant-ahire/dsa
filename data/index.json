@@ -13,15 +13,16 @@
             { "key": "pattern_7", "name": "Pattern 7" },
             { "key": "pattern_8", "name": "Pattern 8" },
             { "key": "count_digit", "name": "Count Digit" },
-            { "key": "palindrome", "name": "Palindrome" },
-            { "key": "reverse_integer", "name": "Reverse Integer" }
+            { "key": "palindrome", "name": "Palindrome", "leetcode": "https://leetcode.com/problems/palindrome-number/" },
+            { "key": "reverse_integer", "name": "Reverse Integer", "leetcode": "https://leetcode.com/problems/reverse-integer/" }
+
         ]
     },
     "arrays": {
         "title": "Arrays",
         "icon": "data_array",
         "problems": [
-            { "key": "remove_duplicates", "name": "Remove Duplicates" }
+            { "key": "remove_duplicates", "name": "Remove Duplicates", "leetcode": "https://leetcode.com/problems/remove-duplicates-from-sorted-array/" }
         ]
     },
     "arrays_practice": {
