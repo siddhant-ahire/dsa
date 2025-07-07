@@ -25,6 +25,13 @@
             { "key": "remove_duplicates", "name": "Remove Duplicates", "leetcode": "https://leetcode.com/problems/remove-duplicates-from-sorted-array/" }
         ]
     },
+    "recursion": {
+        "title": "Recursion",
+        "icon": "data_array",
+        "problems": [
+            { "key": "print_n_to_1", "name": "Print N to 1"}
+        ]
+    },
     "arrays_practice": {
         "title": "Arrays Practice",
         "icon": "data_array",
