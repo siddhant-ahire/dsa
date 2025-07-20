@@ -1,0 +1,23 @@
+<content>
+  <name>Sum of All Numbers</name>
+  <description>
+    Sum of all numbers in an array using recursion.
+  </description>
+  <script>
+  <![CDATA[
+    /**
+     * Calculates the sum of all numbers in an array using recursion.
+     * @param {number[]} arr - The array of numbers.
+     * @param {number} index - The current index.
+     * @returns {number} - The sum of all numbers in the array.
+     */
+    function sumOfAllNumbers(arr, index = 0) {
+        if (index >= arr.length) return 0;
+        return arr[index] + sumOfAllNumbers(arr, index + 1);
+    }
+
+    const numbers = [1, 2, 3, 4, 5];
+    console.log(sumOfAllNumbers(numbers)); // Outputs: 15
+  ]]>
+  </script>
+</content>

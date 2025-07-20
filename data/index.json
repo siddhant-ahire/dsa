@@ -29,7 +29,10 @@
         "title": "Recursion",
         "icon": "data_array",
         "problems": [
-            { "key": "print_n_to_1", "name": "Print N to 1"}
+            { "key": "print_n_to_1", "name": "Print N to 1"},
+            { "key": "sum_of_first_n_numbers", "name": "Sum of First N Natural Numbers" },
+            {"key": "sum_of_all_numbers", "name": "Sum of All Numbers"},
+            {"key": "sum_of_all_odd_numbers", "name": "Sum of All Odd Numbers"}
         ]
     },
     "arrays_practice": {

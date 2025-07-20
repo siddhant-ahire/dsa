@@ -1,0 +1,25 @@
+<content>
+  <name>Sum of All Odd Numbers</name>
+  <description>
+    Sum of all odd numbers in an array using recursion.
+  </description>
+  <script>
+  <![CDATA[
+    /**
+     * Calculates the sum of all odd numbers in an array using recursion.
+     * @param {number[]} arr - The array of numbers.
+     * @param {number} index - The current index.
+     * @returns {number} - The sum of all odd numbers in the array.
+     */
+    function sumOfAllOddNumbers(arr, index = 0) {
+        if (index >= arr.length) return 0;
+        const current = arr[index];
+        const isOdd = current % 2 !== 0;
+        return (isOdd ? current : 0) + sumOfAllOddNumbers(arr, index + 1);
+    }
+
+    const numbers = [1, 2, 3, 4, 5];
+    console.log(sumOfAllOddNumbers(numbers)); // Outputs: 9
+  ]]>
+  </script>
+</content>

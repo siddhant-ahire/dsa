@@ -1,0 +1,21 @@
+<content>
+  <name>Sum of First N Natural Numbers</name>
+  <description>
+    Sum of the first N natural numbers using recursion.
+  </description>
+  <script>
+  <![CDATA[
+    /**
+     * Calculates the sum of the first n natural numbers using recursion.
+     * @param {number} n - The upper limit.
+     * @returns {number} - The sum of the first n natural numbers.
+     */
+    function sumOfFirstN(n) {
+        if (n === 1) return 1;
+        return n + sumOfFirstN(n - 1);
+    }
+
+    console.log(sumOfFirstN(5)); // Outputs: 15
+  ]]>
+  </script>
+</content>
