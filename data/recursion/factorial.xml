@@ -1,0 +1,21 @@
+<content>
+  <name>Factorial</name>
+  <description>
+    Calculates the factorial of a number using recursion.
+  </description>
+  <script>
+  <![CDATA[
+    /**
+     * Calculates the factorial of a number using recursion.
+     * @param {number} n - The number to calculate the factorial for.
+     * @returns {number} - The factorial of the number.
+     */
+    function factorial(n) {
+        if (n === 0) return 1;
+        return n * factorial(n - 1);
+    }
+
+    console.log(factorial(5)); // Outputs: 120
+  ]]>
+  </script>
+</content>

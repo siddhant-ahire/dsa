@@ -1,0 +1,22 @@
+<content>
+  <name>Fibonacci</name>
+  <description>
+    Calculates the nth Fibonacci number using recursion.
+  </description>
+  <script>
+  <![CDATA[
+    /**
+     * Calculates the nth Fibonacci number using recursion.
+     * @param {number} n - The position of the Fibonacci sequence to calculate.
+     * @returns {number} - The nth Fibonacci number.
+     */
+    function fibonacci(n) {
+        if (n === 0) return 0;
+        if (n === 1) return 1;
+        return fibonacci(n - 1) + fibonacci(n - 2);
+    }
+
+    console.log(fibonacci(5)); // Outputs: 5
+  ]]>
+  </script>
+</content>
