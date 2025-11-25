@@ -3,7 +3,6 @@
         "title": "Warm Up",
         "icon": "data_array",
         "problems": [
-            { "key": "second_largest", "name": "Second Largest" },
             { "key": "pattern_1", "name": "Pattern 1" },
             { "key": "pattern_2", "name": "Pattern 2" },
             { "key": "pattern_3", "name": "Pattern 3" },
@@ -22,7 +21,11 @@
         "title": "Arrays",
         "icon": "data_array",
         "problems": [
-            { "key": "remove_duplicates", "name": "Remove Duplicates", "leetcode": "https://leetcode.com/problems/remove-duplicates-from-sorted-array/" }
+            { "key": "remove_duplicates", "name": "Remove Duplicates", "leetcode": "https://leetcode.com/problems/remove-duplicates-from-sorted-array/" },
+            { "key": "second_largest", "name": "Second Largest" },
+            { "key": "reverse_array", "name": "Reverse Array" },
+            { "key": "rotate_array", "name": "Rotate Array", "leetcode": "https://leetcode.com/problems/rotate-array/" },
+            { "key": "max_consecutive_ones", "name": "Max Consecutive Ones", "leetcode": "https://leetcode.com/problems/max-consecutive-ones/" }
         ]
     },
     "recursion": {
@@ -35,14 +38,14 @@
             {"key": "sum_of_all_odd_numbers", "name": "Sum of All Odd Numbers"},
             {"key": "factorial", "name": "Factorial"},
             {"key": "fibonacci", "name": "Fibonacci"},
-            {"key": "power_of_two", "name": "Power of Two"}
+            {"key": "power_of_two", "name": "Power of Two"},
+            {"key": "flatten_array", "name": "Flatten Array"}
         ]
     },
     "arrays_practice": {
         "title": "Arrays Practice",
         "icon": "data_array",
         "problems": [
-            { "key": "1", "name": "Practice Problem 1" },
             { "key": "2", "name": "Practice Problem 2" },
             { "key": "3", "name": "Practice Problem 3" },
             { "key": "4", "name": "Practice Problem 4" },
