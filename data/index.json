@@ -23,9 +23,11 @@
         "problems": [
             { "key": "remove_duplicates", "name": "Remove Duplicates", "leetcode": "https://leetcode.com/problems/remove-duplicates-from-sorted-array/" },
             { "key": "second_largest", "name": "Second Largest" },
+            { "key": "second_lowest", "name": "Second Lowest" },
             { "key": "reverse_array", "name": "Reverse Array" },
             { "key": "rotate_array", "name": "Rotate Array", "leetcode": "https://leetcode.com/problems/rotate-array/" },
-            { "key": "max_consecutive_ones", "name": "Max Consecutive Ones", "leetcode": "https://leetcode.com/problems/max-consecutive-ones/" }
+            { "key": "max_consecutive_ones", "name": "Max Consecutive Ones", "leetcode": "https://leetcode.com/problems/max-consecutive-ones/" },
+            { "key": "find_missing_number", "name": "Find Missing Number", "leetcode": "https://leetcode.com/problems/missing-number/" }
         ]
     },
     "recursion": {
