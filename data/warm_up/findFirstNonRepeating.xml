@@ -1,0 +1,27 @@
+<content>
+  <name>Find First Non-Repeating Character</name>
+  <leetcode>https://leetcode.com/problems/first-unique-character-in-a-string/</leetcode>
+  <description>
+    Find the first non-repeating character in a string.
+  </description>
+  <script>
+  <![CDATA[
+    function findFirstNonRepeating(str) {
+        const freq = {};
+
+        for( let a of str) {
+            freq[a] = (freq[a] || 0) + 1
+        }
+        for(let a of str) {
+            if(freq[a] == 1) return a;
+        }
+        return null;  // if no unique character
+    }
+
+    const sample_arr = ["Python", "Angular", "array"];
+
+    for(let word of sample_arr) {
+        console.log(findFirstNonRepeating(word));
+    }
+    ]]>
+</content>
